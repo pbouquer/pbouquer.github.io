@@ -471,8 +471,8 @@ function createSnowfall() {
   `;
   document.body.appendChild(snowContainer);
 
-  // Créer 50 flocons de neige (petits points)
-  for (let i = 0; i < 50; i++) {
+  // Créer 30 flocons de neige (petits points)
+  for (let i = 0; i < 30; i++) {
     createSnowflake(snowContainer);
   }
 }
