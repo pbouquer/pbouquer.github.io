@@ -24,6 +24,8 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -33,6 +35,8 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   position: relative;
+  width: 100%;
+  max-width: 100vw;
 }
 
 /* Polices pour les titres */
@@ -1288,12 +1292,26 @@ footer {
 /* Responsive */
 @media (max-width: 768px) {
   /* Correction du padding général pour mobile */
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+  }
+
+  * {
+    max-width: 100%;
+  }
+
   main {
     padding: 5rem 1rem 2rem;
+    width: 100%;
+    overflow-x: hidden;
   }
 
   section {
     padding: 3rem 0;
+    width: 100%;
+    overflow-x: hidden;
   }
 
   nav {
@@ -1365,6 +1383,7 @@ footer {
 
   .about-card p {
     font-size: 1rem;
+    text-align: left;
   }
 
   .skills-grid {
@@ -1422,6 +1441,7 @@ footer {
 
   .project-description {
     font-size: 0.95rem;
+    text-align: left;
   }
 
   .tech-tag {
