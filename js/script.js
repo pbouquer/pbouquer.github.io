@@ -453,4 +453,81 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
+// ========================================
+// 13. EFFET NEIGE - PETITS POINTS BLANCS
+// ========================================
+
+function createSnowfall() {
+  const snowContainer = document.createElement('div');
+  snowContainer.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 3;
+    overflow: hidden;
+  `;
+  document.body.appendChild(snowContainer);
+
+  // Créer 50 flocons de neige (petits points)
+  for (let i = 0; i < 50; i++) {
+    createSnowflake(snowContainer);
+  }
+}
+
+function createSnowflake(container) {
+  const snowflake = document.createElement('div');
+
+  // Position horizontale aléatoire
+  const startX = Math.random() * 100;
+
+  // Taille aléatoire entre 1px et 3px
+  const size = Math.random() * 2 + 1;
+
+  // Durée de chute aléatoire entre 10s et 30s
+  const duration = Math.random() * 20 + 10;
+
+  // Délai aléatoire avant le départ
+  const delay = Math.random() * 10;
+
+  // Dérive horizontale aléatoire
+  const drift = (Math.random() - 0.5) * 30;
+
+  snowflake.style.cssText = `
+    position: absolute;
+    top: -10px;
+    left: ${startX}%;
+    width: ${size}px;
+    height: ${size}px;
+    background: white;
+    border-radius: 50%;
+    opacity: ${Math.random() * 0.6 + 0.3};
+    animation: snowfall-fall ${duration}s linear ${delay}s infinite;
+    --drift: ${drift}px;
+  `;
+
+  container.appendChild(snowflake);
+}
+
+// Animation CSS pour la chute de neige
+const snowStyle = document.createElement('style');
+snowStyle.textContent = `
+  @keyframes snowfall-fall {
+    0% {
+      transform: translateY(0) translateX(0);
+    }
+    100% {
+      transform: translateY(100vh) translateX(var(--drift));
+    }
+  }
+`;
+document.head.appendChild(snowStyle);
+
+// Lancer l'effet au chargement de la page
+window.addEventListener('load', () => {
+  createSnowfall();
+});
+
 console.log('🚀 Portfolio chargé avec succès !');

@@ -73,27 +73,6 @@ body::before {
   opacity: 0.25;
 }
 
-/* Effet neige subtile par-dessus */
-body::after {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background:
-    radial-gradient(2px 2px at 20% 30%, white, transparent),
-    radial-gradient(2px 2px at 60% 70%, white, transparent),
-    radial-gradient(1px 1px at 50% 50%, white, transparent),
-    radial-gradient(1px 1px at 80% 10%, white, transparent),
-    radial-gradient(2px 2px at 90% 60%, white, transparent),
-    radial-gradient(1px 1px at 33% 80%, white, transparent);
-  background-size: 200% 200%;
-  opacity: 0.2;
-  animation: snowfall 20s linear infinite;
-  pointer-events: none;
-  z-index: 2;
-}
 
 @keyframes gradientMove {
   0% {
@@ -107,14 +86,6 @@ body::after {
   }
 }
 
-@keyframes snowfall {
-  0% {
-    background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
-  }
-  100% {
-    background-position: 0% 100%, 0% 100%, 0% 100%, 0% 100%, 0% 100%, 0% 100%;
-  }
-}
 
 /* Header et Navigation - Effet givré */
 header {
