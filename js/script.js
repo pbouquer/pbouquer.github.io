@@ -278,39 +278,43 @@ if (skillsSection) {
 // 8. EFFET CURSEUR PERSONNALISÉ (OPTIONNEL)
 // ========================================
 
-const cursor = document.createElement('div');
-cursor.style.cssText = `
-  width: 20px;
-  height: 20px;
-  border: 2px solid #5dade2;
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  transition: transform 0.15s ease, opacity 0.15s ease;
-  opacity: 0;
-`;
-document.body.appendChild(cursor);
+// Désactive complètement sur mobile et tablette (écrans < 1024px)
+if (window.innerWidth >= 1024) {
+  const cursor = document.createElement('div');
+  cursor.classList.add('custom-cursor');
+  cursor.style.cssText = `
+    width: 20px;
+    height: 20px;
+    border: 2px solid #5dade2;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+    opacity: 0;
+  `;
+  document.body.appendChild(cursor);
 
-document.addEventListener('mousemove', (e) => {
-  cursor.style.left = e.clientX - 10 + 'px';
-  cursor.style.top = e.clientY - 10 + 'px';
-  cursor.style.opacity = '1';
-});
-
-// Grossit le curseur sur les liens
-const interactiveElements = document.querySelectorAll('a, button');
-interactiveElements.forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    cursor.style.transform = 'scale(2)';
-    cursor.style.borderColor = '#a8d8ea';
+  document.addEventListener('mousemove', (e) => {
+    cursor.style.left = e.clientX - 10 + 'px';
+    cursor.style.top = e.clientY - 10 + 'px';
+    cursor.style.opacity = '1';
   });
 
-  el.addEventListener('mouseleave', () => {
-    cursor.style.transform = 'scale(1)';
-    cursor.style.borderColor = '#5dade2';
+  // Grossit le curseur sur les liens
+  const interactiveElements = document.querySelectorAll('a, button');
+  interactiveElements.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.transform = 'scale(2)';
+      cursor.style.borderColor = '#a8d8ea';
+    });
+
+    el.addEventListener('mouseleave', () => {
+      cursor.style.transform = 'scale(1)';
+      cursor.style.borderColor = '#5dade2';
+    });
   });
-});
+}
 
 // ========================================
 // 9. ANIMATIONS CSS KEYFRAMES
