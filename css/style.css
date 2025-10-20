@@ -50,7 +50,7 @@ nav h1,
   font-family: 'Space Grotesk', 'Inter', sans-serif;
 }
 
-/* Effet aurore boréale animé */
+/* Dégradés animés colorés */
 body::before {
   content: '';
   position: fixed;
@@ -59,15 +59,18 @@ body::before {
   width: 100%;
   height: 100%;
   background:
-    radial-gradient(ellipse at 20% 30%, rgba(82, 178, 207, 0.4) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, rgba(168, 216, 234, 0.3) 0%, transparent 50%),
-    radial-gradient(ellipse at 40% 70%, rgba(133, 193, 226, 0.35) 0%, transparent 50%),
-    radial-gradient(ellipse at 70% 80%, rgba(93, 173, 226, 0.3) 0%, transparent 50%);
-  background-size: 200% 200%;
-  animation: auroraPulse 15s ease-in-out infinite;
+    linear-gradient(-45deg,
+      #52b2cf 0%,
+      #5dade2 25%,
+      #a8d8ea 50%,
+      #85c1e2 75%,
+      #52b2cf 100%
+    );
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.6;
+  opacity: 0.25;
 }
 
 /* Effet neige subtile par-dessus */
@@ -92,26 +95,15 @@ body::after {
   z-index: 2;
 }
 
-@keyframes auroraPulse {
+@keyframes gradientMove {
   0% {
-    background-position: 0% 0%, 100% 0%, 0% 100%, 100% 100%;
-    opacity: 0.6;
-  }
-  25% {
-    background-position: 50% 50%, 50% 50%, 50% 50%, 50% 50%;
-    opacity: 0.8;
+    background-position: 0% 50%;
   }
   50% {
-    background-position: 100% 100%, 0% 100%, 100% 0%, 0% 0%;
-    opacity: 0.7;
-  }
-  75% {
-    background-position: 50% 50%, 50% 50%, 50% 50%, 50% 50%;
-    opacity: 0.9;
+    background-position: 100% 50%;
   }
   100% {
-    background-position: 0% 0%, 100% 0%, 0% 100%, 100% 100%;
-    opacity: 0.6;
+    background-position: 0% 50%;
   }
 }
 
